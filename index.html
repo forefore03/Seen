@@ -20,6 +20,23 @@
     .detail-sheet{padding:0 0 calc(24px + env(safe-area-inset-bottom));overflow:hidden}.detail-sheet .handle{position:absolute;z-index:3;top:12px;right:0;left:0;background:rgba(255,255,255,.55)}.detail-close{position:absolute;z-index:4;top:18px;right:20px;background:rgba(255,255,255,.88)}.detail-scroll{max-height:82dvh;overflow-y:auto}.detail-hero{position:relative;min-height:230px;padding:68px 20px 25px;overflow:hidden;background:#263c30;color:#fff}.detail-backdrop{position:absolute;inset:-25px;background-position:center 24%;background-size:cover;filter:blur(16px);opacity:.45;transform:scale(1.16)}.detail-backdrop:after{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,27,22,.25),#263c30 93%);content:""}.detail-hero-content{position:relative;z-index:1;display:flex;align-items:flex-end;gap:16px}.detail-cover{display:grid;width:92px;height:132px;flex:0 0 auto;place-items:center;overflow:hidden;border-radius:13px;background:var(--accent-soft);color:var(--text);font-size:28px;box-shadow:0 10px 25px rgba(0,0,0,.25)}.detail-cover img{width:100%;height:100%;object-fit:cover}.detail-title{margin:0;font-size:24px;line-height:1.25;letter-spacing:-1px}.detail-meta{margin:7px 0 0;color:rgba(255,255,255,.75);font-size:13px}.detail-original{margin:3px 0 0;color:rgba(255,255,255,.58);font-size:12px}.detail-body{padding:22px 20px}.detail-section{margin-top:23px;padding-top:20px;border-top:1px solid var(--line)}.detail-section h3{margin:0 0 9px;font-size:14px}.detail-section p{margin:0;color:#454540;font-size:15px;line-height:1.65;white-space:pre-wrap}.ratings-grid{display:grid;gap:10px}.rating-box{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-radius:14px;background:var(--soft)}.rating-box-label{color:var(--muted);font-size:13px;font-weight:700}.rating-box-value{color:var(--text);font-size:15px;font-weight:850}.rating-box-sub{margin-left:6px;color:var(--muted);font-size:12px;font-weight:600}.rating-box.mine .rating-box-value{color:var(--star);letter-spacing:1px}.detail-action{width:100%;min-height:54px;margin-top:26px;border:0;border-radius:15px;background:var(--accent);color:#fff;cursor:pointer;font-size:16px;font-weight:800}
     .settings-copy{margin:-8px 0 22px;color:var(--muted);font-size:14px;line-height:1.55}.storage-status{margin:0 0 14px;padding:12px 13px;border-radius:12px;background:var(--soft);color:var(--muted);font-size:13px;line-height:1.45}.settings-button{display:flex;width:100%;min-height:54px;align-items:center;justify-content:space-between;margin-bottom:10px;padding:0 16px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--text);cursor:pointer;text-align:left;font-size:15px;font-weight:750}.settings-button.danger{color:var(--danger)}#importInput{display:none}.toast{position:fixed;z-index:50;right:20px;bottom:calc(92px + env(safe-area-inset-bottom));left:20px;max-width:640px;margin:auto;padding:12px 16px;border-radius:12px;background:#272a27;color:#fff;opacity:0;pointer-events:none;transform:translateY(12px);transition:.2s;font-size:14px;font-weight:700;text-align:center}.toast.show{opacity:1;transform:translateY(0)}
     @media(min-width:700px){.add-button{right:auto;left:50%;width:640px;transform:translateX(-50%)}}
+    .native-date{
+  display:block !important;
+  width:100% !important;
+  min-height:48px !important;
+  margin-top:10px !important;
+  padding:0 12px !important;
+  border:1px solid #d9d8d0 !important;
+  border-radius:12px !important;
+  background:#fff !important;
+  color:#171814 !important;
+  font:inherit !important;
+  position:relative !important;
+  z-index:10 !important;
+  pointer-events:auto !important;
+  appearance:auto !important;
+  -webkit-appearance:auto !important;
+}
   </style>
 </head>
 <body>
@@ -30,7 +47,28 @@
     <div class="switch-row"><div class="switch-copy"><strong>아직 보지 않은 콘텐츠입니다</strong><span id="unseenHelp">켜면 보고 싶은 목록에 저장됩니다.</span></div><label class="switch"><input id="unseenInput" type="checkbox"><span class="slider"></span></label></div>
     <div class="field"><label>유형</label><div class="type-grid" id="typeChoices"></div></div>
     <div class="field completion-only" id="ratingField"><label>내 평점</label><div class="rating-row" id="ratingChoices"></div></div>
-    <div class="field completion-only" id="dateField"><label>감상일</label><div class="date-choice-row"><button class="date-choice selected" type="button" data-date-choice="today">오늘</button><button class="date-choice" type="button" data-date-choice="yesterday">어제</button><button class="date-choice" type="button" data-date-choice="custom">날짜 선택</button></div><p class="selected-date" id="selectedDateText"></p><input class="native-date" id="watchedAtInput" type="date"></div>
+    <div class="field completion-only" id="dateField">
+  <label for="watchedAtInput">감상일</label>
+
+  <div class="date-choice-row">
+    <button class="date-choice selected" type="button" data-date-choice="today">
+      오늘
+    </button>
+
+    <button class="date-choice" type="button" data-date-choice="yesterday">
+      어제
+    </button>
+  </div>
+
+  <input
+    class="native-date"
+    id="watchedAtInput"
+    name="watchedAt"
+    type="date"
+  >
+
+  <p class="selected-date" id="selectedDateText"></p>
+</div>
     <div class="field"><label for="noteInput" id="noteLabel">한 줄 감상 <span style="color:#77776f;font-weight:600">· 선택</span></label><p class="field-hint" id="noteHint">나중의 나에게 남기는 짧은 메모입니다.</p><textarea class="text-area" id="noteInput" maxlength="300" placeholder="예: 특이한 첩보물. 호텔 관리인이라니."></textarea></div>
     <div class="save-wrap"><button class="save-button" id="saveButton" type="button">기록 저장</button></div>
   </section></div>
