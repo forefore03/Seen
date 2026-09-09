@@ -58,7 +58,12 @@
     .restore-actions{display:grid;gap:9px;margin-top:5px}
     .restore-cancel{width:100%;min-height:48px;border:1px solid var(--line);border-radius:15px;background:#fff;color:var(--text);cursor:pointer;font-size:15px;font-weight:800}
 
-    .stats-button{font-size:19px;font-weight:900}
+    .stats-button{display:grid;place-items:center}
+    .stats-icon-bars{display:flex;width:22px;height:22px;align-items:flex-end;justify-content:center;gap:3px}
+    .stats-icon-bars i{display:block;width:4px;border-radius:3px 3px 1px 1px;background:var(--accent)}
+    .stats-icon-bars i:nth-child(1){height:8px}
+    .stats-icon-bars i:nth-child(2){height:15px}
+    .stats-icon-bars i:nth-child(3){height:21px}
     .stats-view{position:fixed;inset:0;z-index:45;display:none;overflow-y:auto;background:var(--bg);-webkit-overflow-scrolling:touch}
     .stats-view.show{display:block}
     .stats-shell{width:min(100%,760px);min-height:100%;margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) 18px calc(30px + env(safe-area-inset-bottom))}
@@ -95,7 +100,7 @@
   </style>
 </head>
 <body>
-  <main class="app-shell"><header class="topbar"><h1 class="brand">Seen</h1><div class="top-actions"><button class="icon-button" id="librarySearchButton" type="button" aria-label="내 기록 검색">⌕</button><button class="icon-button stats-button" id="statsButton" type="button" aria-label="나의 Seen 통계">▥</button><button class="icon-button" id="settingsButton" type="button">⚙︎</button></div></header><div class="library-search" id="librarySearch"><div class="library-search-box"><span class="library-search-icon">⌕</span><input class="library-search-input" id="librarySearchInput" type="search" autocomplete="off" enterkeyhint="search" placeholder="저장한 기록 검색"><button class="library-search-clear" id="librarySearchClear" type="button" aria-label="검색어 지우기">×</button></div></div><section class="hero"><p class="eyebrow">Personal content history</p><h2>내 콘텐츠</h2></section><nav class="main-tabs"><button class="main-tab active" type="button" data-tab="completed">본 것</button><button class="main-tab" type="button" data-tab="wishlist">보고 싶은 것</button></nav><nav class="filters" id="filters"></nav><div class="sort-summary"><span id="recordCount"></span><button class="sort-text-button" id="sortSummaryButton" type="button"></button></div><section id="recordList"></section></main>
+  <main class="app-shell"><header class="topbar"><h1 class="brand">Seen</h1><div class="top-actions"><button class="icon-button" id="librarySearchButton" type="button" aria-label="내 기록 검색">⌕</button><button class="icon-button stats-button" id="statsButton" type="button" aria-label="나의 Seen 통계"><span class="stats-icon-bars" aria-hidden="true"><i></i><i></i><i></i></span></button><button class="icon-button" id="settingsButton" type="button">⚙︎</button></div></header><div class="library-search" id="librarySearch"><div class="library-search-box"><span class="library-search-icon">⌕</span><input class="library-search-input" id="librarySearchInput" type="search" autocomplete="off" enterkeyhint="search" placeholder="저장한 기록 검색"><button class="library-search-clear" id="librarySearchClear" type="button" aria-label="검색어 지우기">×</button></div></div><section class="hero"><p class="eyebrow">Personal content history</p><h2>내 콘텐츠</h2></section><nav class="main-tabs"><button class="main-tab active" type="button" data-tab="completed">본 것</button><button class="main-tab" type="button" data-tab="wishlist">보고 싶은 것</button></nav><nav class="filters" id="filters"></nav><div class="sort-summary"><span id="recordCount"></span><button class="sort-text-button" id="sortSummaryButton" type="button"></button></div><section id="recordList"></section></main>
   <button class="add-button" id="openAddButton" type="button">＋ 새 기록 추가</button>
   <div class="overlay" id="recordOverlay"><section class="sheet"><div class="handle"></div><header class="sheet-header"><h2 class="sheet-title">새 기록</h2><button class="close-button" id="closeRecordButton" type="button">×</button></header>
     <div class="field"><label>유형</label><div class="type-grid" id="typeChoices"></div></div>
